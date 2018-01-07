@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  h2 Add an assignment from People listing
+  form(method="POST")
+    input(type="text", name="assignmentName", placeholder="Assignment Name")
+    input(type="text", name="assignmentText", placeholder="Assignment Text")
+    ul
+    - for (var i = 0; i < people.length; ++i) {
+      li
+        - var id = 'person' + people[i].id
+        input(type="checkbox", name=id, id=id)
+        label(for=id) #{people[i].name}
+    - }
+    p 
+    p 
+    input(type="submit")
